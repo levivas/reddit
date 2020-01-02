@@ -19,14 +19,21 @@ import kotlinx.android.synthetic.main.row_layout.view.*
 class PostAdapter : PagedListAdapter<Post, BaseViewHolder<Post>>(POST_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<Post> {
-        return PostViewHolder(RowLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PostViewHolder(
+            RowLayoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<Post>, position: Int) {
         holder.bind(getItem(position)!!)
     }
 
-    inner class PostViewHolder constructor(val binding: RowLayoutBinding) : BaseViewHolder<Post>(binding.root) {
+    inner class PostViewHolder constructor(val binding: RowLayoutBinding) :
+        BaseViewHolder<Post>(binding.root) {
         val viewModel = ItemViewModel()
 
         init {
@@ -37,21 +44,24 @@ class PostAdapter : PagedListAdapter<Post, BaseViewHolder<Post>>(POST_COMPARATOR
         }
 
         override fun bind(data: Post) {
-            if(data.thumbnail == "default"){
-                binding.imageThumbnail.visibility = View.GONE
-            }else{
+            if (data.thumbnail.startsWith("https")) {
                 binding.imageThumbnail.visibility = View.VISIBLE
+            } else {
+                binding.imageThumbnail.visibility = View.GONE
             }
             viewModel.initPost(data)
         }
 
-        private fun openDetail(url: String, context: Context){
+        private fun openDetail(url: String, context: Context) {
             val builder = CustomTabsIntent.Builder()
             builder.addDefaultShareMenuItem()
             builder.setShowTitle(true)
             builder.setStartAnimations(context, android.R.anim.fade_in, android.R.anim.fade_out)
             builder.setExitAnimations(context, android.R.anim.fade_in, android.R.anim.fade_out)
-            val packageName = CustomTabHelper.getPackageNameToUse(context, AppConstants.BASE_URL.dropLast(1) + url)
+            val packageName = CustomTabHelper.getPackageNameToUse(
+                context,
+                AppConstants.BASE_URL.dropLast(1) + url
+            )
             val customTabsIntent = builder.build()
             customTabsIntent.intent.setPackage(packageName)
             customTabsIntent.launchUrl(context, Uri.parse(AppConstants.BASE_URL.dropLast(1) + url))

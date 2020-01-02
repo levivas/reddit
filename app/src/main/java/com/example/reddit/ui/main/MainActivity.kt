@@ -41,8 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun setupUI() {
         val recyclerView = viewDataBinding!!.postListRecyclerView
         val adapter = PostAdapter()
-//        val dividerItemDecoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
-//        recyclerView.addItemDecoration(dividerItemDecoration)
+        recyclerView.setHasFixedSize(false)
         recyclerView.adapter = adapter
         viewModel.postLiveData.observe(this, Observer<PagedList<Post>> {
             adapter.submitList(it) {
@@ -55,17 +54,5 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
             }
         })
-    }
-
-    private fun openDetail(url: String){
-        val builder = CustomTabsIntent.Builder()
-        builder.addDefaultShareMenuItem()
-        builder.setShowTitle(true)
-        // animation for enter and exit of tab
-        builder.setStartAnimations(this, android.R.anim.fade_in, android.R.anim.fade_out)
-        builder.setExitAnimations(this, android.R.anim.fade_in, android.R.anim.fade_out)
-        val customTabsIntent = builder.build()
-        customTabsIntent.intent.setPackage(packageName)
-        customTabsIntent.launchUrl(this, Uri.parse(url))
     }
 }

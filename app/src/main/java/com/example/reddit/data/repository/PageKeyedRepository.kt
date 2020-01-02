@@ -8,10 +8,10 @@ import com.example.reddit.data.remote.WebserviceApi
 import javax.inject.Inject
 
 class PageKeyRepository
-@Inject constructor() : PostRepository {
+@Inject constructor(val api: WebserviceApi) : PostRepository {
     @MainThread
     override fun postsReddit(pageSize: Int): Listing<Post> {
-        val sourceFactory = DataSourceFactory(WebserviceApi.create())//add dagger dependency
+        val sourceFactory = DataSourceFactory(api)
         val livePagedList = sourceFactory.toLiveData(pageSize = pageSize)
         return Listing(pagedList = livePagedList)
     }
