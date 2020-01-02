@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.example.reddit.ui.main.viewmodel.ItemViewModel" />
@@ -27,50 +25,45 @@
             android:paddingBottom="10dp">
 
             <TextView
+                style="@style/FormattedTextBold"
                 android:id="@+id/text_subreddit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:text="@{viewModel.subreddit_name_prefixed}"
-                android:textColor="@android:color/black"
                 android:textSize="14sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Sub reddit name" />
 
             <TextView
+                style="@style/FormattedTextRegular"
                 android:id="@+id/text_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:text="@{viewModel.author}"
-                android:textColor="@android:color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Posted by Someone" />
 
             <TextView
+                style="@style/FormattedTextRegular"
                 android:id="@+id/text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:drawableStart="@drawable/ic_time"
                 android:text="@{viewModel.date}"
-                android:textColor="@android:color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_author"
                 tools:text="11 hours ago" />
 
             <TextView
+                style="@style/FormattedTextSemibold"
                 android:id="@+id/text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:text="@{viewModel.title}"
-                android:textColor="@android:color/black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_date"
@@ -88,30 +81,26 @@
                 app:thumbnail="@{viewModel.thumbnail}" />
 
             <TextView
+                style="@style/FormattedTextRegular"
                 android:id="@+id/text_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:drawableStart="@drawable/ic_arrow_up"
                 android:drawableEnd="@drawable/ic_arrow_down"
                 android:text="@{viewModel.score}"
-                android:textColor="@android:color/black"
                 android:textSize="14sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_thumbnail"
                 tools:text="Rating 500k" />
 
             <TextView
+                style="@style/FormattedTextRegular"
                 android:id="@+id/text_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:drawableStart="@drawable/ic_comment"
                 android:text="@{viewModel.num_comments}"
-                android:textColor="@android:color/black"
                 android:textSize="14sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/text_score"
                 app:layout_constraintTop_toBottomOf="@+id/image_thumbnail"
                 tools:text="Comment 500k" />

@@ -1,11 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <style name="FormattedText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#565656</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="FormattedTextRegular" parent="FormattedText">
+        <item name="android:fontFamily">@font/sourcesanspro_regular</item>
+    </style>
+
+    <style name="FormattedTextBold" parent="FormattedText">
+        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
+    </style>
+
+    <style name="FormattedTextSemibold" parent="FormattedText">
+        <item name="android:fontFamily">@font/sourcesanspro_semibold</item>
     </style>
 
 </resources>

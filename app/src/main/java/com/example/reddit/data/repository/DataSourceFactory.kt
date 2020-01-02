@@ -7,7 +7,7 @@ import com.example.reddit.data.remote.WebserviceApi
 
 class DataSourceFactory(private val webApi: WebserviceApi) : DataSource.Factory<String, Post>() {
 
-    private val sourceLiveData = MutableLiveData<PageKeyedDataSource>()
+    val sourceLiveData = MutableLiveData<PageKeyedDataSource>()
 
     override fun create(): DataSource<String, Post> {
         val source = PageKeyedDataSource(webApi)

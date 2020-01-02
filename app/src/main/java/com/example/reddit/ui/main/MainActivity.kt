@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reddit.BR
 import com.example.reddit.R
+import com.example.reddit.data.model.NetworkState
 import com.example.reddit.data.model.Post
+import com.example.reddit.data.model.Status
 import com.example.reddit.databinding.ActivityMainBinding
 import com.example.reddit.ui.base.BaseActivity
 import com.example.reddit.ui.main.adapter.PostAdapter
@@ -53,6 +56,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     recyclerView.scrollToPosition(position)
                 }
             }
+        })
+
+        viewModel.networkLiveData.observe(this, Observer<NetworkState> {
+            if(it.status == Status.FAILED){
+                Toast.makeText(this, it.msg, Toast.LENGTH_SHORT).show()
+            }
+            viewModel.isLoading.set(it == NetworkState.LOADING)
         })
     }
 }
