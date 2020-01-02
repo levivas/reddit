@@ -7,6 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
 import javax.inject.Singleton
 import dagger.Provides
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 @Module
 class GeneralModule {
@@ -15,6 +16,7 @@ class GeneralModule {
     fun provideRetrofit(): WebserviceApi {
         return Retrofit.Builder()
             .baseUrl(AppConstants.BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(WebserviceApi::class.java)
