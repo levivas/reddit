@@ -13,6 +13,7 @@ class ItemViewModel : BaseViewModel() {
         subreddit_name_prefixed.set(post.subreddit_name_prefixed)
         date.set(getDateTime(post.postDate))
         thumbnail.set(post.thumbnail)
+//        thumbnail.set("https://external-preview.redd.it/upjwqZhv4enzkZzaov9l0KRYbRaTSIJW_aU2r1XDZL8.jpg")
         score.set(post.score.toString())
         num_comments.set(post.num_comments.toString())
         permalink.set(post.permalink)
