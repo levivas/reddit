@@ -3,6 +3,7 @@ package com.example.reddit.ui.main.viewmodel
 import androidx.databinding.ObservableField
 import com.example.reddit.data.model.Post
 import com.example.reddit.ui.base.BaseViewModel
+import com.example.reddit.utils.getTimeAgo
 import java.util.*
 
 class ItemViewModel : BaseViewModel() {
@@ -29,42 +30,9 @@ class ItemViewModel : BaseViewModel() {
     private fun getDateTime(time: Long): String? {
         try {
             val netDate = Date(time * 1000)
-            return getTimeAgo(netDate)
+            return netDate.getTimeAgo()
         } catch (e: Exception) {
             return e.toString()
-        }
-    }
-
-    private val SECOND_MILLIS = 1000
-    private val MINUTE_MILLIS = 60 * SECOND_MILLIS
-    private val HOUR_MILLIS = 60 * MINUTE_MILLIS
-    private val DAY_MILLIS = 24 * HOUR_MILLIS
-
-    private fun currentDate(): Date {
-        val calendar = Calendar.getInstance()
-        return calendar.time
-    }
-
-    private fun getTimeAgo(date: Date): String {
-        var time = date.time
-        if (time < 1000000000000L) {
-            time *= 1000
-        }
-
-        val now = currentDate().time
-        if (time > now || time <= 0) {
-            return "in the future"
-        }
-
-        val diff = now - time
-        return when {
-            diff < MINUTE_MILLIS -> "moments ago"
-            diff < 2 * MINUTE_MILLIS -> "a minute ago"
-            diff < 60 * MINUTE_MILLIS -> "${diff / MINUTE_MILLIS} minutes ago"
-            diff < 2 * HOUR_MILLIS -> "an hour ago"
-            diff < 24 * HOUR_MILLIS -> "${diff / HOUR_MILLIS} hours ago"
-            diff < 48 * HOUR_MILLIS -> "yesterday"
-            else -> "${diff / DAY_MILLIS} days ago"
         }
     }
 }

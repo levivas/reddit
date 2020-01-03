@@ -1,14 +1,9 @@
 package com.example.reddit.ui.main
 
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reddit.BR
@@ -20,7 +15,7 @@ import com.example.reddit.databinding.ActivityMainBinding
 import com.example.reddit.ui.base.BaseActivity
 import com.example.reddit.ui.main.adapter.PostAdapter
 import com.example.reddit.ui.main.viewmodel.MainViewModel
-import com.example.reddit.utils.viewmodel.viewModelProvider
+import com.example.reddit.utils.viewModelProvider
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
