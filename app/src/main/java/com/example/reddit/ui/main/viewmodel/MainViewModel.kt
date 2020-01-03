@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MainViewModel
 @Inject constructor(repository: PageKeyRepository) : BaseViewModel() {
     val isLoading = ObservableBoolean(true)
-    var result = repository.postsReddit(AppConstants.PartCountPost)
+    var result = repository.postsReddit()
     val postLiveData = result.pagedList
     val networkLiveData = result.networkState
 }

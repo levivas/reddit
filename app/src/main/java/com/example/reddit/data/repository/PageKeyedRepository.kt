@@ -7,13 +7,16 @@ import com.example.reddit.data.model.Listing
 import com.example.reddit.data.model.Post
 import com.example.reddit.data.remote.WebserviceApi
 import javax.inject.Inject
+import androidx.paging.PagedList
+import com.example.reddit.BuildConfig
+
 
 class PageKeyRepository
-@Inject constructor(private val api: WebserviceApi) : PostRepository {
+@Inject constructor(private val sourceFactory: DataSourceFactory, val config: PagedList.Config) :
+    PostRepository {
     @MainThread
-    override fun postsReddit(pageSize: Int): Listing<Post> {
-        val sourceFactory = DataSourceFactory(api)
-        val livePagedList = sourceFactory.toLiveData(pageSize = pageSize)
+    override fun postsReddit(): Listing<Post> {
+        val livePagedList = sourceFactory.toLiveData(config)
         return Listing(livePagedList, Transformations.switchMap(sourceFactory.sourceLiveData) {
             it.networkState
         })

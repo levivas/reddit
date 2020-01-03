@@ -1,5 +1,6 @@
 package com.example.reddit.di.modules
 
+import androidx.paging.PagedList
 import com.example.reddit.data.remote.WebserviceApi
 import com.example.reddit.utils.AppConstants
 import dagger.Module
@@ -21,4 +22,12 @@ class GeneralModule {
             .build()
             .create(WebserviceApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun providePagedListConfigBuilder() = PagedList.Config.Builder()
+        .setEnablePlaceholders(false)
+        .setPrefetchDistance(AppConstants.PrefetchSize)
+        .setPageSize(AppConstants.PageSize)
+        .build()
 }

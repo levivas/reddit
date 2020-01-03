@@ -9,8 +9,10 @@ import com.example.reddit.data.model.Post
 import com.example.reddit.data.remote.WebserviceApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class PageKeyedDataSource(private val redditApi: WebserviceApi) : PageKeyedDataSource<String, Post>() {
+class PageKeyedDataSource
+    @Inject constructor(private val redditApi: WebserviceApi) : PageKeyedDataSource<String, Post>() {
 
     val networkState = MutableLiveData<NetworkState>()
 
