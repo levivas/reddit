@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class PageKeyedDataSource
+class RedditPageKeyedDataSource
     @Inject constructor(private val redditApi: WebserviceApi) : PageKeyedDataSource<String, Post>() {
 
     val networkState = MutableLiveData<NetworkState>()

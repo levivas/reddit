@@ -3,16 +3,15 @@ package com.example.reddit.data.repository
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.example.reddit.data.model.Post
-import com.example.reddit.data.remote.WebserviceApi
 import javax.inject.Inject
 
-class DataSourceFactory
-    @Inject constructor(private val webApi: WebserviceApi) : DataSource.Factory<String, Post>() {
+class RedditDataSourceFactory
+    @Inject constructor(private val source: RedditPageKeyedDataSource) : DataSource.Factory<String, Post>() {
 
-    val sourceLiveData = MutableLiveData<PageKeyedDataSource>()
+    val sourceLiveData = MutableLiveData<RedditPageKeyedDataSource>()
 
     override fun create(): DataSource<String, Post> {
-        val source = PageKeyedDataSource(webApi)
+//        val source = PageKeyedDataSource(webApi)
         sourceLiveData.postValue(source)
         return source
     }

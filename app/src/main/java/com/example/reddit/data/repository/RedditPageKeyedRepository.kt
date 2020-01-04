@@ -5,15 +5,13 @@ import androidx.lifecycle.Transformations
 import androidx.paging.toLiveData
 import com.example.reddit.data.model.Listing
 import com.example.reddit.data.model.Post
-import com.example.reddit.data.remote.WebserviceApi
 import javax.inject.Inject
 import androidx.paging.PagedList
-import com.example.reddit.BuildConfig
 
 
-class PageKeyRepository
-@Inject constructor(private val sourceFactory: DataSourceFactory, val config: PagedList.Config) :
-    PostRepository {
+class RedditPageKeyedRepository
+@Inject constructor(private val sourceFactory: RedditDataSourceFactory, val config: PagedList.Config) :
+    RedditPostRepository {
     @MainThread
     override fun postsReddit(): Listing<Post> {
         val livePagedList = sourceFactory.toLiveData(config)
