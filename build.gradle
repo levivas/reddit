@@ -2,6 +2,22 @@
 
 buildscript {
     ext.kotlin_version = '1.3.50'
+    ext.card_view_version = '1.0.0'
+    ext.app_compat_version = '1.1.0'
+    ext.constraint_layout_version = '1.1.3'
+    ext.recycler_view_version = '1.2.0-alpha01'
+    ext.view_model_version = '2.2.0-rc03'
+    ext.paging_version = '2.1.1'
+    ext.chrome_tabs_version = '1.2.0'
+    ext.retrofit_version = '2.3.0'
+    ext.retrofit_logger_version = '3.9.0'
+    ext.rxjava_version = '2.2.12'
+    ext.rxandroid_version = '2.1.1'
+    ext.dagger_version = '2.24'
+    ext.picasso_version = '2.71828'
+    ext.junit_version = '4.12'
+    ext.espresso_version = '3.2.0'
+
     repositories {
         google()
         jcenter()

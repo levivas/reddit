@@ -11,7 +11,6 @@ class RedditDataSourceFactory
     val sourceLiveData = MutableLiveData<RedditPageKeyedDataSource>()
 
     override fun create(): DataSource<String, Post> {
-//        val source = PageKeyedDataSource(webApi)
         sourceLiveData.postValue(source)
         return source
     }

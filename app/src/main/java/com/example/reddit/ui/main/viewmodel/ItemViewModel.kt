@@ -18,6 +18,7 @@ class ItemViewModel : BaseViewModel() {
         num_comments.set(post.num_comments.toString())
         permalink.set(post.permalink)
     }
+
     var title: ObservableField<String> = ObservableField("Title title title title")
     var author: ObservableField<String> = ObservableField("Posted by Ihor Levkivskyi")
     var subreddit_name_prefixed: ObservableField<String> = ObservableField("Sub reddit name")
@@ -27,9 +28,10 @@ class ItemViewModel : BaseViewModel() {
     var num_comments: ObservableField<String> = ObservableField("Comment 500k")
     var permalink: ObservableField<String> = ObservableField("")
 
+    private val milliseconds = 1000
     private fun getDateTime(time: Long): String? {
         try {
-            val netDate = Date(time * 1000)
+            val netDate = Date(time * milliseconds)
             return netDate.getTimeAgo()
         } catch (e: Exception) {
             return e.toString()

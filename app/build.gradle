@@ -38,50 +38,45 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-
-    //recyclerview
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
-    //rxjava
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //android ui
+    implementation "androidx.cardview:cardview:${rootProject.ext.card_view_version}"
+    implementation "androidx.appcompat:appcompat:${rootProject.ext.app_compat_version}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.ext.constraint_layout_version}"
+    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.recycler_view_version}"
 
     //view model
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-beta01'
-
-
-    //di
-    implementation "com.google.dagger:dagger:2.24"
-    kapt "com.google.dagger:dagger-compiler:2.24"
-    implementation "com.google.dagger:dagger-android:2.24"
-    implementation "com.google.dagger:dagger-android-support:2.24"
-    kapt "com.google.dagger:dagger-android-processor:2.24"
-
-    //image
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
-
-    //chrome tabs
-    implementation 'androidx.browser:browser:1.2.0'
-
-
-    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:${rootProject.ext.view_model_version}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${rootProject.ext.view_model_version}"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.ext.view_model_version}"
 
     //paging
-    implementation "androidx.paging:paging-runtime-ktx:2.1.0"
+    implementation "androidx.paging:paging-runtime-ktx:${rootProject.ext.paging_version}"
 
-    testImplementation 'junit:junit:4.12'
+    //chrome tabs
+    implementation "androidx.browser:browser:${rootProject.ext.chrome_tabs_version}"
+
+    //http retrofit
+    implementation "com.squareup.retrofit2:retrofit:${rootProject.ext.retrofit_version}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofit_version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.retrofit_logger_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${rootProject.ext.retrofit_version}"
+
+    //multithreading rxjava
+    implementation "io.reactivex.rxjava2:rxjava:${rootProject.ext.rxjava_version}"
+    implementation "io.reactivex.rxjava2:rxandroid:${rootProject.ext.rxandroid_version}"
+
+    //di
+    implementation "com.google.dagger:dagger:${rootProject.ext.dagger_version}"
+    kapt "com.google.dagger:dagger-compiler:${rootProject.ext.dagger_version}"
+    implementation "com.google.dagger:dagger-android:${rootProject.ext.dagger_version}"
+    implementation "com.google.dagger:dagger-android-support:${rootProject.ext.dagger_version}"
+    kapt "com.google.dagger:dagger-android-processor:${rootProject.ext.dagger_version}"
+
+    //image
+    implementation "com.squareup.picasso:picasso:${rootProject.ext.picasso_version}"
+
+    //test
+    testImplementation "junit:junit:${rootProject.ext.junit_version}"
 //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.ext.espresso_version}"
 }
